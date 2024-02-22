@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-
+import '../App.css'
 
 const SignUpForm = ({setToken}) => {
     const [username, setUsername] = useState('');
@@ -26,20 +26,32 @@ const handleSubmit = async (event) => {
     }
 }
     return (
-    <div>
+        <div className="signup-form-container">
         <h2>Sign Up!</h2>
-        {error && <p>{error}</p>}
+        {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
-            <label>
-                Username: <input type="text" value={username} onChange={(e)=> setUsername(e.target.value)}/>
-            </label>
-            <label>
-                Password: <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)}/>
-            </label>
-            <button type="submit">Submit</button>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="submit">Submit</button>
         </form>
-        </div>
-    )
+      </div>
+    );
 }
 
 
